@@ -20,7 +20,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 
-
 public class Main extends Application {
 	
 	public int Euklides1(int nwd_a, int nwd_b) 
@@ -134,7 +133,7 @@ public class Main extends Application {
 		if(a<0)
 		{
 			int c= (-a)-b;
-			a = b-c;
+			a = a-c;
 		}
 		
 		
@@ -144,79 +143,78 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			//public String klucz;
 			
 			//tworzenie i pozycja przycisku Uncode
-			Button button = new Button();
-			button.setText("Code");
-			button.setPrefSize(100, 50);
-			button.setLayoutX(110);
-			button.setLayoutY(230);
+			Button buttonCode = new Button();
+			buttonCode.setText("Code");
+			buttonCode.setPrefSize(100, 50);
+			buttonCode.setLayoutX(110);
+			buttonCode.setLayoutY(230);
 					
 			
 			//tworzenie i pozycja przycisku Code
-			Button button1 =new Button();
-			button1.setText("Uncode");
-			button1.setPrefSize(100,50);
-			button1.setLayoutX(230);
-			button1.setLayoutY(230);
+			Button buttonUncode =new Button();
+			buttonUncode.setText("Uncode");
+			buttonUncode.setPrefSize(100,50);
+			buttonUncode.setLayoutX(230);
+			buttonUncode.setLayoutY(230);
 					
 			//tworzenie i pozycja przycisku Generate key
-			Button button2 =new Button();
-			button2.setText("Generate Key");
-			button2.setPrefSize(240,30);
-			button2.setLayoutX(100);
-			button2.setLayoutY(184);
+			Button buttonGenerateKey =new Button();
+			buttonGenerateKey.setText("Generate Key");
+			buttonGenerateKey.setPrefSize(240,30);
+			buttonGenerateKey.setLayoutX(100);
+			buttonGenerateKey.setLayoutY(184);
 			
 			//tworzenie i pozycja przycisku Crypt/Encrypt File
-			Button button3 =new Button();
-			button3.setText("Crypt/Encrypt File");
-			button3.setPrefSize(240,30);
-			button3.setLayoutX(100);
-			button3.setLayoutY(370);
+			Button buttonCryptUncryprFile =new Button();
+			buttonCryptUncryprFile.setText("Crypt/Encrypt File");
+			buttonCryptUncryprFile.setPrefSize(240,30);
+			buttonCryptUncryprFile.setLayoutX(100);
+			buttonCryptUncryprFile.setLayoutY(370);
 			
 			//tworzenie pola tekstowego Plain text
-			Label label1 = new Label("Plain Text:");
-			TextField textfield = new TextField();
-			label1.setLayoutX(60);
-			textfield.setLayoutX(140);
-			label1.setLayoutY(44);
-			textfield.setLayoutY(40);
+			Label labelPlainText = new Label("Plain Text:");
+			TextField textFieldPlainText = new TextField();
+			labelPlainText.setLayoutX(60);
+			textFieldPlainText.setLayoutX(140);
+			labelPlainText.setLayoutY(44);
+			textFieldPlainText.setLayoutY(40);
 			
 			//tworzenie pola tekstowego Key 1
-			Label label2 = new Label("Key 1:");
-			TextField textfield2 = new TextField();
-			label2.setLayoutX(90);
-			textfield2.setLayoutX(140);
-			label2.setLayoutY(94);
-			textfield2.setLayoutY(90);
+			Label labelKey1 = new Label("Key 1:");
+			TextField textFieldKey1 = new TextField();
+			labelKey1.setLayoutX(90);
+			textFieldKey1.setLayoutX(140);
+			labelKey1.setLayoutY(94);
+			textFieldKey1.setLayoutY(90);
 			
 			//tworzenie pola tekstowego Encrypted text
-			Label label3 = new Label("Encrypted text:");
-			TextField textfield3 = new TextField();
-			label3.setLayoutX(30);
-			textfield3.setLayoutX(140);
-			label3.setLayoutY(304);
-			textfield3.setLayoutY(300);
+			Label labelEncryptedText = new Label("Encrypted text:");
+			TextField textFieldEncryptedText = new TextField();
+			labelEncryptedText.setLayoutX(30);
+			textFieldEncryptedText.setLayoutX(140);
+			labelEncryptedText.setLayoutY(304);
+			textFieldEncryptedText.setLayoutY(300);
 			
 			//tworzenie pola tekstowego Key2
-			Label label4 = new Label("Key 2:");
-			TextField textfield4 = new TextField();
-			label4.setLayoutX(90);
-			textfield4.setLayoutX(140);
-			label4.setLayoutY(140);
-			textfield4.setLayoutY(136);
+			Label labelKey2 = new Label("Key 2:");
+			TextField textFieldKey2 = new TextField();
+			labelKey2.setLayoutX(90);
+			textFieldKey2.setLayoutX(140);
+			labelKey2.setLayoutY(140);
+			textFieldKey2.setLayoutY(136);
 			
 			//operacje dla przycisków key1,key2,code,uncode, generate key, Crypted/Encrypted File
 			
 			//buton Code
-			button.setOnAction(value ->  
+			buttonCode.setOnAction(value ->  
 			{
 				
 				String tekst,klucz1,klucz2;
-				tekst = textfield.getText();
-		        klucz1 = textfield2.getText();
-		        klucz2= textfield4.getText();
+				tekst = textFieldPlainText.getText();
+		        klucz1 = textFieldKey1.getText();
+		        klucz2= textFieldKey2.getText();
 		        
 		        int key1=Integer.parseInt(klucz1);
 		        int key2=Integer.parseInt(klucz2);     
@@ -225,19 +223,19 @@ public class Main extends Application {
 		        text= modulo(text*text,key1*key2);
 		     				   
 		        
-		        textfield3.setText(Integer.toString(text));
+		        textFieldEncryptedText.setText(Integer.toString(text));
 		        
 			});
 			
 			//button Uncode
-			button1.setOnAction(value ->  
+			buttonUncode.setOnAction(value ->  
 			{
 				
 				String tekst,klucz1,klucz2,wyn;
 				int text,text2,key1,key2,wynik,wynik2,wynik3,wynik4;
-		        klucz1 = textfield2.getText();
-		        klucz2 = textfield4.getText();
-		        tekst = textfield.getText();
+		        klucz1 = textFieldKey1.getText();
+		        klucz2 = textFieldKey2.getText();
+		        tekst = textFieldPlainText.getText();
 		        key1=Integer.parseInt(klucz1);
 		        key2=Integer.parseInt(klucz2);     
 		        text=Integer.parseInt(tekst);
@@ -261,17 +259,16 @@ public class Main extends Application {
 		        	text2=modulo(text2,key2);
 		        }
 		    
-		       
 		        wynik = modulo(Euklides2(key1,key2)*key1*text2+Euklides1(key1,key2)*key2*text,key1*key2);
 		        wynik2= modulo(Euklides2(key1,key2)*key1*text2-(Euklides1(key1,key2)*key2*text),key1*key2);
 		        wynik3= modulo(-(Euklides2(key1,key2)*key1*text2+Euklides1(key1,key2)*key2*text),key1*key2);
 		        wynik4= modulo(-(Euklides2(key1,key2)*key1*text2-(Euklides1(key1,key2)*key2*text)),key1*key2);
 		        wyn= Integer.toString(wynik)+","+Integer.toString((wynik2))+","+Integer.toString((wynik3))+","+Integer.toString((wynik4));
-		        textfield3.setText(wyn);
+		        textFieldEncryptedText.setText(wyn);
 			
 			});
 			//button Generate key
-			button2.setOnAction(value ->  
+			buttonGenerateKey.setOnAction(value ->  
 			{
 				
 				 Random rand = new Random(System.currentTimeMillis());
@@ -290,27 +287,27 @@ public class Main extends Application {
 				 }while((n1!=3)||(n2!=3));
 				 
 				 
-				 textfield2.setText(Integer.toString(key));
-				 textfield4.setText(Integer.toString(key2));
+				 textFieldKey1.setText(Integer.toString(key));
+				 textFieldKey2.setText(Integer.toString(key2));
 				 
 		        });
 			
-			//button3 Crypt/Encrypt File
-			button3.setOnAction(value ->  
+			//buttonCryptUncryprFile Crypt/Encrypt File
+			buttonCryptUncryprFile.setOnAction(value ->  
 			{
 		           
 		        });
 			
 			//tworzenie panelu i umieszczanie przycisków
 			Pane root = new Pane();
-			root.getChildren().add(button);
-			root.getChildren().add(button1);
-			root.getChildren().add(button2);
-			root.getChildren().add(button3);
-			root.getChildren().addAll(label1,textfield);
-			root.getChildren().addAll(textfield2,label2);
-			root.getChildren().addAll(textfield3,label3);
-			root.getChildren().addAll(textfield4,label4);
+			root.getChildren().add(buttonCode);
+			root.getChildren().add(buttonUncode);
+			root.getChildren().add(buttonGenerateKey);
+			root.getChildren().add(buttonCryptUncryprFile);
+			root.getChildren().addAll(labelPlainText,textFieldPlainText);
+			root.getChildren().addAll(textFieldKey1,labelKey1);
+			root.getChildren().addAll(textFieldEncryptedText,labelEncryptedText);
+			root.getChildren().addAll(textFieldKey2,labelKey2);
 			Scene scene = new Scene(root,400,450);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
